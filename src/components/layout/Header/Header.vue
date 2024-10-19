@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import Quot from '@components/ui/Quot.vue'
-import ThemeSwitcher from '@components/ui/ThemeSwitcher/ThemeSwitcher.vue'
+import ThemeSwitcher from '@components/ui/ThemeSwitcher.vue'
 import Divider from 'primevue/divider'
 </script>
 
@@ -11,7 +10,7 @@ import Divider from 'primevue/divider'
 			<h1 class="text-4xl">Kokoro</h1>
 		</div>
 		<div class="app-header-center-container">
-			<Quot />
+			<!-- <Quot /> -->
 		</div>
 		<div class="app-header__right-container">
 			<ThemeSwitcher />
