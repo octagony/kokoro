@@ -1,19 +1,28 @@
 <script setup lang="ts">
 import { ITimerData } from '@interfaces/components/Timer/ITimer'
+import { useTimerStatusStore } from '@store/status/useTimerStatusStore'
 import Button from 'primevue/button'
-import { computed, ComputedRef, onMounted, reactive } from 'vue'
+import { computed, ComputedRef, onMounted, reactive, watch } from 'vue'
 
 const data: ITimerData = reactive({
-	duration: 1500,
-	remainingTime: 1500,
+	duration: null as number | null,
+	remainingTime: null as number | null,
 	timer: null as number | null,
 	circumference: 2 * Math.PI * 180,
 	isRunning: false,
 })
 
 onMounted(() => {
-	data.remainingTime = data.duration
+	data.remainingTime = data.duration = useTimerStatusStore().getCurrentTime
 })
+
+watch(
+	computed(() => useTimerStatusStore().getCurrentTime),
+	() => {
+		data.remainingTime = data.duration = useTimerStatusStore().getCurrentTime
+		toggleTimer()
+	}
+)
 
 const formatTime = (time: number): string => {
 	const minutes = Math.floor(time / 60)
@@ -91,11 +100,12 @@ const offset: ComputedRef<number> = computed(() => {
 			{{ formatTime(data.remainingTime) }}
 		</div>
 		<Button
-			class="mx-auto !text-xl mt-4"
+			class="mx-auto !absolute top-[50%] left-[50%] -translate-x-[50%] !text-xl mt-4"
 			@click="toggleTimer"
 			:label="`${data.isRunning ? 'Pause' : 'Start'}`"
 			severity="contrast"
 			rounded
 		/>
+		<slot name="modes"></slot>
 	</div>
 </template>

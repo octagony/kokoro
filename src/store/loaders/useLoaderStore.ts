@@ -1,4 +1,4 @@
-import { ILoader } from '@interfaces/loader/ILoader'
+import { ILoader } from '@interfaces/store/loader/ILoader'
 import { defineStore } from 'pinia'
 
 export const useLoaderStore = defineStore('loader-store', {

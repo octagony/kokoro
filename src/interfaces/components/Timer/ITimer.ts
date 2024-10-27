@@ -1,6 +1,6 @@
 export interface ITimerData {
-	duration: number
-	remainingTime: number
+	duration: null | number
+	remainingTime: null | number
 	timer: null | number
 	circumference: number
 	isRunning: boolean
