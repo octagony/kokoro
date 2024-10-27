@@ -1,5 +1,5 @@
+import { IQuote } from '@interfaces/composables/quote/IQuote'
 import { useLoaderStore } from '@store/loaders/useLoaderStore'
-import { IQuote } from 'interfaces/quote/IQuote'
 import ky from 'ky'
 
 export const useRandomQuotes = () => {

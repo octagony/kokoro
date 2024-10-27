@@ -2,7 +2,7 @@
 import { useRandomQuotes } from '@composable/requests/useRandomQuotes'
 import { onMounted, reactive } from 'vue'
 
-import { IQuote } from '@interfaces/quote/IQuote'
+import { IQuote } from '@interfaces/composables/quote/IQuote'
 
 const { getRandomQuote } = useRandomQuotes()
 
